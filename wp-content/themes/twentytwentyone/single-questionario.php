@@ -1,7 +1,7 @@
 <?php
 
-$resposta_respondida = "Resposta " . $_POST['resposta'];
-$resposta_correcta = the_field('resposta_correcta');
+$resposta_respondida = $_POST['resposta'];
+$resposta_correcta = get_field('resposta_correcta');
 
 if ($resposta_respondida == $resposta_correcta) {
     echo "Resposta Correcta";

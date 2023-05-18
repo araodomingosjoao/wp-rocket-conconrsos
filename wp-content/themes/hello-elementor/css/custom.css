@@ -1,0 +1,19 @@
+/* Estilizar o botão de envio */
+.qsm-container .qsm-submit-button {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+    
+/* Estilizar o botão de refazer o teste */
+.qsm-container .qsm-retake-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

@@ -9,6 +9,16 @@
  * @since Twenty Twenty-One 1.0
  */
 
+ function validate_answer() {
+    // Seu código aqui
+	print_r($_POST);
+    // wp_send_json(  );
+    // wp_die();
+}
+
+add_action( 'wp_ajax_validate_answer', 'validate_answer');
+add_action( 'wp_ajax_nopriv_validate_answer', 'validate_answer');
+
 // This theme requires WordPress 5.3 or later.
 if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';

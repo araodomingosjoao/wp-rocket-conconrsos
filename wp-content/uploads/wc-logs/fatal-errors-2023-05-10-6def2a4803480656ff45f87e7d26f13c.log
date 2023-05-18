@@ -1,0 +1,10 @@
+2023-05-10T03:31:19+00:00 CRITICAL syntax error, unexpected '<', expecting end of file, em /home/u852138319/domains/rocketconcursos.com/public_html/newdev/wp-content/themes/hello-elementor/header.php, na linha 43
+
+2023-05-10T03:32:38+00:00 CRITICAL syntax error, unexpected '<', expecting end of file, em /home/u852138319/domains/rocketconcursos.com/public_html/newdev/wp-content/themes/hello-elementor/header.php, na linha 43
+
+2023-05-10T03:36:59+00:00 CRITICAL syntax error, unexpected '<', expecting end of file, em /home/u852138319/domains/rocketconcursos.com/public_html/newdev/wp-content/themes/hello-theme-child-master/functions.php, na linha 38
+
+2023-05-10T03:37:33+00:00 CRITICAL syntax error, unexpected 'tag' (T_STRING), expecting '[', em /home/u852138319/domains/rocketconcursos.com/public_html/newdev/wp-content/themes/hello-theme-child-master/functions.php, na linha 38
+
+2023-05-10T03:37:33+00:00 CRITICAL syntax error, unexpected 'tag' (T_STRING), expecting '[', em /home/u852138319/domains/rocketconcursos.com/public_html/newdev/wp-content/themes/hello-theme-child-master/functions.php, na linha 38
+
