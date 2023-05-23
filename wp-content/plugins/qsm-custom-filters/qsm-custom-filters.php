@@ -22,7 +22,6 @@ function qsm_custom_filters_html() {
                 'taxonomy' => 'qsm_category',
                 'hide_empty' => false,
             ));
-            print_r($categories);
                 ?>
                 <select id="qsm-custom-category">
                     <option value="">Todas as categorias</option>
