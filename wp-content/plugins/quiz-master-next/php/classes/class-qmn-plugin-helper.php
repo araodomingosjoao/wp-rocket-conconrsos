@@ -554,11 +554,7 @@ class QMNPluginHelper {
 	 */
 	public static function get_default_texts() {
 		$defaults = array(
-<<<<<<< HEAD
 			'message_before'                   => __('%QUIZ_NAME%', 'quiz-master-next'),
-=======
-			'message_before'                   => __('Welcome to your %QUIZ_NAME%', 'quiz-master-next'),
->>>>>>> 5a2cf3c4edf9644af108d07f02858a04d19f8221
 			'message_comment'                  => __('Please fill in the comment box below.', 'quiz-master-next'),
 			'message_end_template'             => '',
 			'question_answer_template'         => __('%QUESTION%<br />%USER_ANSWERS_DEFAULT%<br/>%CORRECT_ANSWER_INFO%', 'quiz-master-next'),
@@ -569,13 +565,8 @@ class QMNPluginHelper {
 			'scheduled_timeframe_text'         => '',
 			'twitter_sharing_text'             => __('I just scored %CORRECT_SCORE%% on %QUIZ_NAME%!', 'quiz-master-next'),
 			'facebook_sharing_text'            => __('I just scored %CORRECT_SCORE%% on %QUIZ_NAME%!', 'quiz-master-next'),
-<<<<<<< HEAD
-			'submit_button_text'               => __('Enviar', 'quiz-master-next'),
-			'retake_quiz_button_text'          => __('Refazer o concurso', 'quiz-master-next'),
-=======
 			'submit_button_text'               => __('Submit', 'quiz-master-next'),
 			'retake_quiz_button_text'          => __('Retake Quiz', 'quiz-master-next'),
->>>>>>> 5a2cf3c4edf9644af108d07f02858a04d19f8221
 			'previous_button_text'             => __('Previous', 'quiz-master-next'),
 			'next_button_text'                 => __('Next', 'quiz-master-next'),
 			'empty_error_text'                 => __('Please complete all required fields!', 'quiz-master-next'),

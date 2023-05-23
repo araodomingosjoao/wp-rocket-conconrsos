@@ -1,0 +1,10 @@
+.qsm-custom-filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.qsm-custom-filters input[type="text"],
+.qsm-custom-filters select {
+    margin-right: 10px;
+}

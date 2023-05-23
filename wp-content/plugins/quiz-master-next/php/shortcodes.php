@@ -8,18 +8,6 @@
  * @param string $content The text to be used for the link
  * @return string The HTML the shortcode will be replaced with
  */
-
-function qsm_add_filter_category()
-{
-	$categories = get_terms( array(
-		'taxonomy' => 'categoria-perguntas', // substitua 'qsm_question_category' pelo slug da sua taxonomia de categoria
-		'hide_empty' => true,
-	) );
-	print_r($categories);
-}
-
-add_shortcode( 'qsm_filter_category', 'qsm_add_filter_category' );
-
 function qsm_quiz_link_shortcode( $atts, $content = '' ) {
 
 	$args = shortcode_atts(

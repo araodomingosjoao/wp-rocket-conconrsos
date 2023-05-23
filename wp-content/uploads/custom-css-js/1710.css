@@ -1,0 +1,80 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+/* Alterar cores */
+body .qsm-question-wrapper {
+  background-color: #f9f9f9 !important;
+  border: 1px solid #ddd !important;
+}
+
+body .qsm-question-wrapper .qsm-question-category a {
+  color: #777 !important;
+}
+
+body .qsm-question-wrapper .qsm-question-category a:hover {
+  color: #333 !important;
+}
+
+body .qsm-question-wrapper .qsm-question-progress {
+  background-color: #e0e0e0 !important;
+}
+
+body .qsm-question-wrapper .qsm-question-progress-bar {
+  background-color: #4caf50 !important;
+}
+
+body .qsm-question-wrapper .qsm-question-progress-text {
+  color: #333 !important;
+}
+
+body .qsm-question-wrapper .qsm-question-buttons .qsm-button {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 4px !important;
+  text-transform: uppercase !important;
+  transition: background-color 0.3s ease !important;
+}
+
+body .qsm-question-wrapper .qsm-question-buttons .qsm-button:hover {
+  background-color: #45a049 !important;
+}
+
+/* Estilizar caixas de pergunta */
+body .qsm-question-wrapper .qsm-question-container {
+  padding: 20px !important;
+  border-radius: 4px !important;
+}
+
+/* Estilizar barras de progresso */
+body .qsm-question-wrapper .qsm-question-progress-bar {
+  height: 10px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ajustar tipografia */
+body .qsm-question-wrapper .qsm-question-title {
+  font-family: "Arial", sans-serif !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+
+body .qsm-question-wrapper .qsm-question-text {
+  font-family: "Arial", sans-serif !important;
+  font-size: 16px !important;
+}
+
+body .qsm-question-wrapper .qsm-question-buttons .qsm-button {
+  font-family: "Arial", sans-serif !important;
+  font-size: 14px !important;
+}
+
+/* Outros ajustes */
+body .qsm-question-wrapper .qsm-clearfix::after {
+  content: "" !important;
+  display: table !important;
+  clear: both !important;
+}
+</style>
+<!-- end Simple Custom CSS and JS -->

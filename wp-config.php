@@ -26,7 +26,7 @@ define( 'DB_NAME', 'questionario' );
 define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'my@123' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
