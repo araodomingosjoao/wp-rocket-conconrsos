@@ -1,3 +1,37 @@
+/* Estilos para a estrutura de grade */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-12 {
+  flex-basis: 100%;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-md-4 {
+  flex-basis: 33.333333%;
+  max-width: 33.333333%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Estilos para o campo de pesquisa */
+#qsm-custom-search {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Outros estilos para os elementos restantes */
+
 .qsm-custom-filters {
     display: flex;
     align-items: center;
@@ -8,3 +42,174 @@
 .qsm-custom-filters select {
     margin-right: 10px;
 }
+.qsm-comment-section {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .qsm-comment-icon {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .custom-comment-list {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    /* Adicione outras propriedades de estilo conforme necessário */
+  }
+  
+  .custom-comment-list .qsm-comment-item {
+    margin-bottom: 10px;
+    /* Adicione outras propriedades de estilo conforme necessário */
+  }
+  
+  .custom-comment-list .qsm-comment-item p {
+    font-size: 14px;
+    color: #333;
+    /* Adicione outras propriedades de estilo conforme necessário */
+  }
+  
+  .custom-comment-list .qsm-comment-item .comment-date {
+    font-size: 12px;
+    color: #999;
+    /* Adicione outras propriedades de estilo conforme necessário */
+  }
+
+  .multiselect {
+    width: 200px;
+  }
+  
+  .selectBox {
+    position: relative;
+  }
+  
+  .selectBox select {
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  #checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+  }
+  
+  #checkboxes label {
+    display: block;
+  }
+  
+  #checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+
+  .q-select-input {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .q-select-input .dropdown-toggle {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .q-select-input .caret {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .q-select-input .dropdown-menu {
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .q-select-input .dropdown-menu .q-dropdown-content {
+    padding: 10px;
+  }
+  
+  .q-select-input .dropdown-menu .q-search-input {
+    margin-bottom: 10px;
+  }
+  
+  .q-select-input .dropdown-menu .q-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .q-select-input .dropdown-menu .q-options li {
+    padding: 5px 0;
+  }
+  
+  .q-select-input .dropdown-menu .q-dropdown-footer {
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    text-align: right;
+  }
+  
+  .q-select-input .dropdown-menu .q-clear-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .q-select-input .dropdown-menu .q-clear-btn .q-icon {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  
+  .q-select-input .dropdown-menu .q-clear-btn .q-icon.q-icon-times {
+    color: #999;
+  }
+  
+  .q-select-input .dropdown-menu .q-options .checkbox {
+    display: block;
+    padding-left: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .q-select-input .dropdown-menu .q-options .checkbox input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .q-select-input .dropdown-menu .q-options .checkbox span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+  
+  .q-select-input .dropdown-menu .q-options .checkbox:hover span {
+    text-decoration: underline;
+  }
+  
+  .q-select-input .dropdown-menu .q-options .checkbox input[type="checkbox"]:checked+span {
+    font-weight: bold;
+  }
+  .q-select-input .dropdown-menu {
+    display: none;
+  }
+  
+  .q-select-input.open .dropdown-menu {
+    display: block;
+  }
