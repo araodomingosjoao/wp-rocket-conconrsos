@@ -143,6 +143,7 @@ jQuery(document).ready(function ($) {
         method: 'POST',
         success: function(response){
           console.log(response);
+          parseQuestionData(response.data[0])
         },
         error: function(error){
           console.log(error);
@@ -211,3 +212,19 @@ jQuery(document).ready(function ($) {
   });
 
 });
+
+// Função para analisar os dados da pergunta
+function parseQuestionData(questionData) {
+  var question = {};
+
+  // Extrair o título da pergunta dos question_settings
+  var questionSettings = phpUnserialize(questionData.question_settings);
+  question.title = questionSettings.question_title;
+
+  // Extrair as respostas do answer_array
+  var answers = phpUnserialize(questionData.answer_array);
+  console.log(question.title, answers);
+
+  return question;
+}
+

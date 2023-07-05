@@ -22,6 +22,8 @@ function qsm_custom_filters_scripts()
     wp_enqueue_style('select2-style', plugins_url('select2.min.css', __FILE__));
     wp_enqueue_script('select2-script', plugins_url('select2.min.js', __FILE__), array('jquery'), '1.0', true);
 
+    wp_enqueue_script('phpUnserialize-script', plugins_url('phpUnserialize.js', __FILE__), '', '1.0', true);
+
     wp_enqueue_style('qsm-custom-filters-style', plugins_url('qsm-custom-filters.css', __FILE__));
     wp_enqueue_script('qsm-custom-filters-script', plugins_url('qsm-custom-filters.js', __FILE__), array('jquery'), '1.0', true);
     wp_localize_script('qsm-custom-filters-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
