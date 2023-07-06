@@ -1,0 +1,6 @@
+2023-07-06T09:03:57+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\translatepress-multilingual\includes\advanced-settings\exclude-selectors-automatic-translation.php, na linha 5
+
+2023-07-06T13:12:07+00:00 CRITICAL Allowed memory size of 536870912 bytes exhausted (tried to allocate 254074880 bytes), em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\qsm-custom-filters\qsm-custom-filters.php, na linha 127
+
+2023-07-06T13:12:20+00:00 CRITICAL Allowed memory size of 536870912 bytes exhausted (tried to allocate 251748352 bytes), em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\qsm-custom-filters\qsm-custom-filters.php, na linha 127
+

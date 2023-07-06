@@ -732,7 +732,9 @@ function qsm_options_questions_tab_content()
 
 						foreach ($terms as $term) {
 							$category = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "term_taxonomy WHERE term_taxonomy_id = $term->term_id LIMIT 1");
-							$array[$category[0]->taxonomy][] = $term;
+							if ($category[0]->status) {
+								$array[$category[0]->taxonomy][] = $term;
+							}
 						}
 
 						foreach ($array as $category => $terms) { ?>

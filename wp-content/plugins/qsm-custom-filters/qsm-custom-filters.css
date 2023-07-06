@@ -20,6 +20,9 @@
   padding-left: 15px;
 }
 
+.mb-2{
+  margin-bottom: 15px;
+}
 /* Estilos para o campo de pesquisa */
 #qsm-custom-search {
   width: 100%;
@@ -213,3 +216,160 @@
   .q-select-input.open .dropdown-menu {
     display: block;
   }
+  .q-select-input {
+    position: relative;
+  }
+  
+  .q-select-input .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .q-select-input .dropdown-toggle:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .q-select-input .dropdown-toggle .q-placeholder {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .q-select-input .dropdown-toggle .q-count {
+    margin-left: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .q-select-input .dropdown-toggle i.caret {
+    margin-left: 0.5rem;
+  }
+  
+  .q-select-input .dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    display: none;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+  }
+  
+  .q-select-input .dropdown-menu.show {
+    display: block;
+  }
+  
+  .q-select-input .dropdown-menu .q-dropdown-content {
+    max-height: 20rem;
+    overflow-y: auto;
+  }
+  
+  .q-select-input .dropdown-menu .q-search-input {
+    position: relative;
+    margin: 0 0.5rem;
+  }
+  
+  .q-select-input .dropdown-menu .q-search-input input {
+    width: 100%;
+    padding: 0.375rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .q-select-input .dropdown-menu .q-search-input input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .q-select-input .dropdown-menu .q-search-input i.q-icon-search {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+  }
+  
+  .q-select-input .dropdown-menu .q-dropdown-footer {
+    padding: 0.5rem;
+    text-align: right;
+  }
+  
+  .q-select-input .dropdown-menu .q-clear-btn {
+    margin-left: 0.5rem;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .q-select-input .dropdown-menu .q
+  .q-select-input .dropdown-menu .q-options {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .q-select-input .dropdown-menu .q-options li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .q-select-input .dropdown-menu .q-options li:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .q-select-input .dropdown-menu .q-options li label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .q-select-input .dropdown-menu .q-options li input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+  
+  .q-select-input .dropdown-menu .q-options li span {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .q-select-input .dropdown-menu .q-dropdown-footer .js-close-select-dropdown-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #007bff;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  .q-select-input .dropdown-menu .q-dropdown-footer .js-close-select-dropdown-btn:focus,
+  .q-select-input .dropdown-menu .q-dropdown-footer .js-close-select-dropdown-btn:hover {
+    text-decoration: underline;
+  }
+  
+  /* Esse estilo CSS define a aparência da classe `.q-select-input` e seus elementos filhos para criar um dropdown estilizado com seleção múltipla. Certifique-se de aplicar essas classes HTML aos elementos correspondentes em seu código. */
+  
