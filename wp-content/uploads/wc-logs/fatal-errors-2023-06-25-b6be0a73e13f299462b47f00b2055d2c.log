@@ -1,0 +1,4 @@
+2023-06-25T11:08:53+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em E:\Projectos\wp-rocket-conconrsos\wp-content\plugins\jet-engine\includes\modules\dynamic-visibility\inc\conditions\not-exists.php, na linha 53
+
+2023-06-25T17:43:23+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em E:\Projectos\wp-rocket-conconrsos\wp-includes\Requests\src\Transport\Curl.php, na linha 205
+

