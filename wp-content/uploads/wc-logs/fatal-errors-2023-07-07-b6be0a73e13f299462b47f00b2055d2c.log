@@ -1,0 +1,11 @@
+2023-07-07T09:27:49+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\translatepress-multilingual\includes\advanced-settings\opposite-flag-shortcode.php, na linha 3
+
+2023-07-07T11:11:14+00:00 CRITICAL Uncaught Error: Attempt to assign property "checked" on array in C:\Users\a.domingos\Documents\questionario\wp-content\plugins\quiz-master-next\php\admin\options-page-questions-tab.php:921
+Stack trace:
+#0 C:\Users\a.domingos\Documents\questionario\wp-includes\class-wp-hook.php(308): qsm_get_categories('')
+#1 C:\Users\a.domingos\Documents\questionario\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\Users\a.domingos\Documents\questionario\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\Users\a.domingos\Documents\questionario\wp-admin\admin-ajax.php(188): do_action('wp_ajax_qsm_get...')
+#4 {main}
+  thrown, em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\quiz-master-next\php\admin\options-page-questions-tab.php, na linha 921
+

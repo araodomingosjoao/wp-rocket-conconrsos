@@ -2641,7 +2641,145 @@ var import_button;
                 });
                 
                 $('.questions').on('click', '.add-category', function (event) {
+
                     event.preventDefault();
+                    var data = {
+                        action: "qsm_get_categories",
+                        question_id: $('.question.opened').attr('data-question-id'),
+                    };
+                
+                    jQuery.ajax(ajaxurl, {
+                        data: data,
+                        method: "POST",
+                        beforeSend: function() {
+                            var formCategoryQuestion = document.getElementById('form_category_question');
+                            formCategoryQuestion.innerHTML = '<p>Carregando...</p>';
+                        },
+                        success: function (response) {
+
+                            // // Dados de exemplo retornados na resposta
+                            // var response = {
+                            //     "teste": [
+                            //       { term_id: 1, name: 'Categoria 1', checked: true },
+                            //       { term_id: 2, name: 'Categoria 2', checked: true },
+                            //       { term_id: 3, name: 'Categoria 3', checked: true },
+                            //       { term_id: 4, name: 'Categoria 4', checked: true },
+                            //       { term_id: 5, name: 'Categoria 5', checked: true },
+                            //       { term_id: 6, name: 'Categoria 6', checked: true }
+                            //     ],
+                            //     "exemplo": [
+                            //       { term_id: 1, name: 'Categoria 1', checked: true },
+                            //       { term_id: 2, name: 'Categoria 2', checked: true },
+                            //       { term_id: 3, name: 'Categoria 3', checked: true },
+                            //       { term_id: 4, name: 'Categoria 4', checked: true },
+                            //       { term_id: 5, name: 'Categoria 5', checked: true },
+                            //       { term_id: 6, name: 'Categoria 6', checked: true }
+                            //     ]
+                            //   };
+                              
+                              console.log(response);
+                            // Selecionar o formulário com o ID "form_category_question"
+                            var formCategoryQuestion = document.getElementById('form_category_question');
+
+                            // Limpar o conteúdo existente dentro do formulário
+                            formCategoryQuestion.innerHTML = '';
+
+                            // Criação dos elementos para cada categoria na resposta
+                            Object.keys(response.data).forEach(function(category) {
+                            // Criar o bloco HTML para a categoria
+                            var categoryDiv = document.createElement('div');
+                            categoryDiv.id = 'categorydiv';
+                            categoryDiv.className = 'postbox';
+
+                            var categoryDivTitle = document.createElement('h2');
+                            categoryDivTitle.className = 'hndle ui-sortable-handle';
+
+                            var categoryDivTitleText = document.createElement('span');
+                            categoryDivTitleText.textContent = category;
+
+                            var categoryDocLink = document.createElement('a');
+                            categoryDocLink.className = 'qsm-question-doc';
+                            categoryDocLink.rel = 'noopener';
+                            categoryDocLink.href = '<?= esc_url(qsm_get_plugin_link("docs/creating-quizzes-and-surveys/adding-and-editing-questions/", "quiz_editor", "category", "quizsurvey-category_doc")) ?>';
+                            categoryDocLink.target = '_blank';
+                            categoryDocLink.title = 'View Documentation';
+
+                            var categoryDocIcon = document.createElement('span');
+                            categoryDocIcon.className = 'dashicons dashicons-editor-help';
+
+                            categoryDocLink.appendChild(categoryDocIcon);
+
+                            categoryDivTitle.appendChild(categoryDivTitleText);
+                            categoryDivTitle.appendChild(categoryDocLink);
+
+                            var categoryDivInside = document.createElement('div');
+                            categoryDivInside.className = 'inside';
+
+                            var multiCategoryArea = document.createElement('div');
+                            multiCategoryArea.id = 'multi_category_area';
+                            multiCategoryArea.className = 'qsm-row multi_category_area';
+
+                            var multiCategoriesWrapper = document.createElement('div');
+                            multiCategoriesWrapper.id = 'multi_categories_wrapper';
+                            multiCategoriesWrapper.className = 'categorydiv qsm_categories_list';
+
+                            var multiCategoriesChecklist = document.createElement('ul');
+                            multiCategoriesChecklist.id = 'multicategories_checklist';
+                            multiCategoriesChecklist.className = 'qsm_category_checklist categorychecklist form-no-clear';
+
+                            // Iterar sobre os itens da categoria na resposta
+                            response.data[category].forEach(function(item) {
+                                var listItem = document.createElement('li');
+                                listItem.id = 'qsm_category-' + item.term_id;
+
+                                var label = document.createElement('label');
+                                label.className = 'selectit';
+
+                                var checkbox = document.createElement('input');
+                                checkbox.value = item.term_id;
+                                checkbox.type = 'checkbox';
+                                checkbox.name = 'check[]';
+                                checkbox.id = 'in-qsm_category_' + item.term_id;
+
+                                // Verificar se o checkbox deve ser marcado
+                                if (item.checked) {
+                                checkbox.checked = true;
+                                }
+
+                                var checkboxText = document.createTextNode(item.name);
+
+                                label.appendChild(checkbox);
+                                label.appendChild(checkboxText);
+
+                                listItem.appendChild(label);
+                                multiCategoriesChecklist.appendChild(listItem);
+                            });
+
+                            multiCategoriesWrapper.appendChild(multiCategoriesChecklist);
+                            multiCategoryArea.appendChild(multiCategoriesWrapper);
+                            categoryDivInside.appendChild(multiCategoryArea);
+                            categoryDiv.appendChild(categoryDivTitle);
+                            categoryDiv.appendChild(categoryDivInside);
+
+                            // Adicionar o bloco da categoria ao formulário
+                            formCategoryQuestion.appendChild(categoryDiv);
+                            });
+
+                            // Criação do botão "Enviar"
+                            var submitButton = document.createElement('button');
+                            submitButton.type = 'submit';
+                            submitButton.className = 'button button-primary';
+                            submitButton.textContent = 'Enviar';
+
+                            // Adicionar o botão ao formulário
+                            formCategoryQuestion.appendChild(submitButton);
+
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        },
+                    });
+
                     QSMQuestion.openAddCategoryPagePopup();
                 });
 
