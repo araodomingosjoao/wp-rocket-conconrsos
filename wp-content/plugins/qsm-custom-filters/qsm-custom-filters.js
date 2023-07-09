@@ -209,18 +209,6 @@ jQuery(document).ready(function ($) {
     e.stopPropagation(); // Impede que o evento de clique se propague para elementos pai
   });
 
-  // Ao digitar na busca rápida
-  $("#quick-search").on("input", function () {
-    var searchValue = $(this).val().toLowerCase();
-
-    // Filtrar os itens de categoria com base no valor da busca
-    $(".q-options li").each(function () {
-      var itemText = $(this).text().toLowerCase();
-      var itemMatches = itemText.indexOf(searchValue) > -1;
-      $(this).toggle(itemMatches);
-    });
-  });
-
   // Ao clicar em qualquer lugar da página
   $(document).on("click", function () {
     // Fechar todos os dropdowns
@@ -403,4 +391,17 @@ function updateItemCount(category) {
 
   document.querySelector(".q-count-" + category).textContent =
     ' ' + count + " selecionados";
+}
+
+function quickSearch(category) {
+  // Ao digitar na busca rápida
+  var searchValue = document.querySelector("#quick-search-" + category).value.toLowerCase();
+  
+  // Filtrar os itens de categoria com base no valor da busca
+  var options = document.querySelectorAll(".q-options." + category + " li");
+  options.forEach(function (item) {
+    var itemText = item.textContent.toLowerCase();
+    var itemMatches = itemText.indexOf(searchValue) > -1;
+    item.style.display = itemMatches ? "block" : "none";
+  });
 }

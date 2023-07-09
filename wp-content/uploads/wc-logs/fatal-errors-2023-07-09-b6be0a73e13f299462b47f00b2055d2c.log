@@ -1,0 +1,4 @@
+2023-07-09T08:13:04+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em E:\Projectos\wp-rocket-conconrsos\wp-includes\functions.php, na linha 6651
+
+2023-07-09T09:49:12+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em E:\Projectos\wp-rocket-conconrsos\wp-content\plugins\elementor\core\role-manager\role-manager.php, na linha 9
+

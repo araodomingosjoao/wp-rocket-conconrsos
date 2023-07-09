@@ -141,11 +141,11 @@ function qsm_custom_filters_html()
                             <div class="q-dropdown-content">
                                 <div class="q-search-input">
                                     <label class="sr-only" for="quick-search">Busca rápida</label>
-                                    <input type="text" class="form-control" placeholder="Busca rápida" aria-label="Busca rápida" id="quick-search" data-no-summary="">
+                                    <input type="text" class="form-control" placeholder="Busca rápida" aria-label="Busca rápida" id="quick-search-<?= $category ?>" data-no-summary="" oninput="quickSearch('<?= htmlspecialchars($category, ENT_QUOTES) ?>')">
                                 </div>
                                 <div class="q-hidden-inputs"></div>
                                 <div class="selected-items"></div>
-                                <ul class="q-options">
+                                <ul class="q-options <?= $category ?>">
                                     <?php foreach ($terms as $term) { ?>
                                         <li tabindex="0">
                                             <label class="checkbox">
