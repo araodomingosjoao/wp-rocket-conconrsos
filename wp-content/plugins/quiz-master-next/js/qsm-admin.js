@@ -2656,26 +2656,6 @@ var import_button;
                             formCategoryQuestion.innerHTML = '<p>Carregando...</p>';
                         },
                         success: function (response) {
-
-                            // // Dados de exemplo retornados na resposta
-                            // var response = {
-                            //     "teste": [
-                            //       { term_id: 1, name: 'Categoria 1', checked: true },
-                            //       { term_id: 2, name: 'Categoria 2', checked: true },
-                            //       { term_id: 3, name: 'Categoria 3', checked: true },
-                            //       { term_id: 4, name: 'Categoria 4', checked: true },
-                            //       { term_id: 5, name: 'Categoria 5', checked: true },
-                            //       { term_id: 6, name: 'Categoria 6', checked: true }
-                            //     ],
-                            //     "exemplo": [
-                            //       { term_id: 1, name: 'Categoria 1', checked: true },
-                            //       { term_id: 2, name: 'Categoria 2', checked: true },
-                            //       { term_id: 3, name: 'Categoria 3', checked: true },
-                            //       { term_id: 4, name: 'Categoria 4', checked: true },
-                            //       { term_id: 5, name: 'Categoria 5', checked: true },
-                            //       { term_id: 6, name: 'Categoria 6', checked: true }
-                            //     ]
-                            //   };
                               
                               console.log(response);
                             // Selecionar o formulário com o ID "form_category_question"
@@ -2765,10 +2745,35 @@ var import_button;
                             formCategoryQuestion.appendChild(categoryDiv);
                             });
 
+                            // Criação das divs de alerta
+                            var successAlert = document.createElement('div');
+                            successAlert.className = 'alert alert-success';
+                            successAlert.style.display = 'none';
+                            successAlert.style.backgroundColor = '#dff0d8';
+                            successAlert.style.borderColor = '#d0e9c6';
+                            successAlert.style.color = '#3c763d';
+                            successAlert.style.padding = '10px';
+                            successAlert.style.marginBottom = '10px';
+                            successAlert.textContent = 'Categorias cadastrados com sucesso.';
+
+                            var errorAlert = document.createElement('div');
+                            errorAlert.className = 'alert alert-error';
+                            errorAlert.style.display = 'none';
+                            errorAlert.style.backgroundColor = '#f2dede';
+                            errorAlert.style.borderColor = '#ebccd1';
+                            errorAlert.style.color = '#a94442';
+                            errorAlert.style.padding = '10px';
+                            errorAlert.style.marginBottom = '10px';
+                            errorAlert.textContent = 'Erro ao cadastrar as categorias.';
+
+                            // Adicionar as divs de alerta ao formulário
+                            formCategoryQuestion.appendChild(successAlert);
+                            formCategoryQuestion.appendChild(errorAlert);
                             // Criação do botão "Enviar"
                             var submitButton = document.createElement('button');
                             submitButton.type = 'submit';
                             submitButton.className = 'button button-primary';
+                            submitButton.id = 'btn_save_category';
                             submitButton.textContent = 'Enviar';
 
                             // Adicionar o botão ao formulário
@@ -3025,19 +3030,22 @@ var import_button;
                     jQuery.ajax(ajaxurl, {
                         data: data,
                         method: 'POST',
+                        beforeSend: function(){
+                            $(".alert-success").hide();
+                            $(".alert-error").hide();
+                            $("#btn_save_category").text("Enviando...").attr('disabled',true);
+                        },
                         success: function(response){
-
-                            console.log(response);
+                            $("#btn_save_category").text("Enviar").attr('disabled',false);
+                            $(".alert-success").show();
                         },
                         error: function(error){
-
-                            console.log(error);
+                            $("#btn_save_category").text("Enviar").attr('disabled',false);
+                            $(".alert-error").show();
                         }
                     });
 
                 });
-
-
 
                 $(document).on('change', '#change-answer-editor', function (event) {
                     var newVal = $(this).val();

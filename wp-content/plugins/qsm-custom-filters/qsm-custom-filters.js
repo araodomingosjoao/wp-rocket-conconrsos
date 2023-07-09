@@ -281,7 +281,7 @@ jQuery(document).ready(function ($) {
           "_" +
           index +
           '" value="' +
-          answer[2] +
+          (answer[2] == 1 ? 0 : 1) +
           '">'
       );
       var $answerLabel = $(
