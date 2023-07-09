@@ -22,6 +22,8 @@ function qsm_custom_filters_scripts()
     wp_enqueue_style('select2-style', plugins_url('select2.min.css', __FILE__));
     wp_enqueue_script('select2-script', plugins_url('select2.min.js', __FILE__), array('jquery'), '1.0', true);
 
+    wp_enqueue_script('phpUnserialize-script', plugins_url('phpUnserialize.js', __FILE__), '', '1.0', true);
+
     wp_enqueue_style('qsm-custom-filters-style', plugins_url('qsm-custom-filters.css', __FILE__));
     wp_enqueue_script('qsm-custom-filters-script', plugins_url('qsm-custom-filters.js', __FILE__), array('jquery'), '1.0', true);
     wp_localize_script('qsm-custom-filters-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
@@ -121,18 +123,20 @@ function qsm_custom_filters_html()
 
             foreach ($terms as $term) {
                 $category = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "term_taxonomy WHERE term_taxonomy_id = $term->term_id LIMIT 1");
-                $array[$category[0]->taxonomy][] = $term;
+                if ($category[0]->status) {
+                    $array[$category[0]->taxonomy][] = $term;
+                }
             }
 
             foreach ($array as $category => $terms) { ?>
-                <div class="col-md-4 form-group">
-                    <div class="q-select-input dropdown q-select-input-multiple q-select-input-mobile-modal open" id="discipline_ids" data-placeholder="Disciplina" data-hide-placeholder-when-select="false" data-name="discipline_ids" data-disabled="false" data-multiple="true" data-summary="true" data-cache="true" data-text-field="nome" data-value-field="id" data-per-page="15" data-search="true" data-value="" data-limit="63" data-blank-message="Nenhum resultado" data-ajax="true" data-ajax-url="https://brokk.qconcursos.com/product/1/disciplines" data-ajax-custom-params="" data-ajax-collection-root="">
-                        <button class="dropdown-toggle form-control" data-toggle="dropdown" aria-expanded="true">
+                <div class="col-md-4 form-group mb-2">
+                    <div class="q-select-input dropdown close" id="discipline_ids">
+                        <div class="dropdown-toggle form-control" data-toggle="dropdown" aria-expanded="true">
                             <span class="q-placeholder"><?= ucfirst(str_replace('-', ' ', $category)) ?></span>
-                            <span class="q-count"></span>
+                            <span class="q-count-<?= $category ?>"></span>
                             <i class="caret"></i>
                             <i class="fa fa-chevron-down"></i>
-                        </button>
+                        </div>
                         <div class="dropdown-menu">
                             <div class="q-dropdown-content">
                                 <div class="q-search-input">
@@ -145,7 +149,7 @@ function qsm_custom_filters_html()
                                     <?php foreach ($terms as $term) { ?>
                                         <li tabindex="0">
                                             <label class="checkbox">
-                                                <input type="checkbox" name="discipline_ids[]" value="<?= $term->term_id ?>" data-summary-label="Disciplina" data-summary-display="<?= $term->name ?>">
+                                                <input type="checkbox" id="<?= $category ?>" name="discipline_ids[]" value="<?= $term->term_id ?>" data-summary-label="Disciplina" data-summary-display="<?= $term->name ?>" onchange="updateItemCount('<?= htmlspecialchars($category, ENT_QUOTES) ?>')">
                                                 <span><?= $term->name ?></span>
                                             </label>
                                         </li>

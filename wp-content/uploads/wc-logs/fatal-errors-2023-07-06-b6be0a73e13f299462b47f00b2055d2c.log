@@ -1,2 +1,12 @@
+<<<<<<< HEAD
 2023-07-06T19:59:22+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em E:\Projectos\wp-rocket-conconrsos\wp-includes\Requests\src\Transport\Curl.php, na linha 205
+=======
+2023-07-06T09:03:57+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\translatepress-multilingual\includes\advanced-settings\exclude-selectors-automatic-translation.php, na linha 5
+
+2023-07-06T13:12:07+00:00 CRITICAL Allowed memory size of 536870912 bytes exhausted (tried to allocate 254074880 bytes), em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\qsm-custom-filters\qsm-custom-filters.php, na linha 127
+
+2023-07-06T13:12:20+00:00 CRITICAL Allowed memory size of 536870912 bytes exhausted (tried to allocate 251748352 bytes), em C:\Users\a.domingos\Documents\questionario\wp-content\plugins\qsm-custom-filters\qsm-custom-filters.php, na linha 127
+>>>>>>> 641e9ef0751b5a7690d417678c1fdda5db224c83
+
+2023-07-06T20:29:46+00:00 CRITICAL Maximum execution time of 120 seconds exceeded, em E:\Projectos\wp-rocket-conconrsos\wp-content\plugins\elementor\includes\widgets\image-gallery.php, na linha 6
 

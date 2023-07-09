@@ -732,7 +732,9 @@ function qsm_options_questions_tab_content()
 
 						foreach ($terms as $term) {
 							$category = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "term_taxonomy WHERE term_taxonomy_id = $term->term_id LIMIT 1");
-							$array[$category[0]->taxonomy][] = $term;
+							if ($category[0]->status) {
+								$array[$category[0]->taxonomy][] = $term;
+							}
 						}
 
 						foreach ($array as $category => $terms) { ?>
@@ -746,7 +748,8 @@ function qsm_options_questions_tab_content()
 										<div id="multi_categories_wrapper" class="categorydiv qsm_categories_list">
 											<ul id=" multicategories_checklist" class="qsm_category_checklist categorychecklist form-no-clear">
 												<?php foreach($terms as $term) { ?>
-													<li id="qsm_category-10584"><label class="selectit"><input value="<?= $term->term_id ?>" type="checkbox" name="check[]" id="in-qsm_category_<?= $term->term_id ?>"> <?= $term->name ?></label></li>
+													<?php $itemSelected = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "mlw_questions_terms WHERE term_id = $term->term_id LIMIT 1"); ?>
+													<li id="qsm_category-10584"><label class="selectit"><input value="<?= $term->term_id ?>" type="checkbox" name="check[]" id="in-qsm_category_<?= $term->term_id ?>" <?= $itemSelected ? 'checked' : '' ?>> <?= $term->name ?></label></li>
 												<?php } ?>
 											</ul>
 										</div>

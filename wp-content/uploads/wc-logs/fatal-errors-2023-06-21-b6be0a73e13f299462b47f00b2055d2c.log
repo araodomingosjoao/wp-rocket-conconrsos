@@ -1,0 +1,11 @@
+2023-06-21T11:04:08+00:00 CRITICAL Uncaught TypeError: array_push(): Argument #1 ($array) must be of type array, null given in C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-content\plugins\quiz-master-next\php\admin\options-page-questions-tab.php:622
+Stack trace:
+#0 C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-content\plugins\quiz-master-next\php\admin\options-page-questions-tab.php(622): array_push(NULL, Object(stdClass))
+#1 C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-content\plugins\quiz-master-next\php\admin\quiz-options-page.php(226): qsm_options_questions_tab_content()
+#2 C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-includes\class-wp-hook.php(308): qsm_generate_quiz_options('')
+#3 C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#4 C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#5 C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-admin\admin.php(259): do_action('admin_page_mlw_...')
+#6 {main}
+  thrown, em C:\Users\estagiariodf\Downloads\wordpress-6.2\questionario\wp-content\plugins\quiz-master-next\php\admin\options-page-questions-tab.php, na linha 622
+
