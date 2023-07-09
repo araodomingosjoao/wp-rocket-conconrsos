@@ -736,7 +736,7 @@ function qsm_options_questions_tab_content()
 								$array[$category[0]->taxonomy][] = $term;
 							}
 						}
-
+						
 						foreach ($array as $category => $terms) { ?>
 							<div id="categorydiv" class="postbox">
 								<h2 class="hndle ui-sortable-handle">
@@ -748,7 +748,9 @@ function qsm_options_questions_tab_content()
 										<div id="multi_categories_wrapper" class="categorydiv qsm_categories_list">
 											<ul id=" multicategories_checklist" class="qsm_category_checklist categorychecklist form-no-clear">
 												<?php foreach($terms as $term) { ?>
-													<?php $itemSelected = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "mlw_questions_terms WHERE term_id = $term->term_id LIMIT 1"); ?>
+													<?php 
+														$itemSelected = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "mlw_questions_terms WHERE term_id = $term->term_id LIMIT 1"); 
+													?>
 													<li id="qsm_category-10584"><label class="selectit"><input value="<?= $term->term_id ?>" type="checkbox" name="check[]" id="in-qsm_category_<?= $term->term_id ?>" <?= $itemSelected ? 'checked' : '' ?>> <?= $term->name ?></label></li>
 												<?php } ?>
 											</ul>
@@ -897,6 +899,32 @@ function qsm_options_questions_tab_content()
 		</div>
 	</div>
 <?php
+}
+
+add_action('wp_ajax_qsm_get_categories', 'qsm_get_categories');
+add_action('wp_ajax_nopriv_qsm_get_categories', 'qsm_get_categories');
+
+function qsm_get_categories()
+{
+	global $wpdb;
+
+	$terms = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "terms");
+	$question_id = $_POST['question_id'];
+	$array = array();
+
+	foreach ($terms as $term) {
+		$itemSelected = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "mlw_questions_terms WHERE term_id = $term->term_id AND question_id = $question_id LIMIT 1");
+		$term->checked = $itemSelected ? true : false;
+		
+		$category = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "term_taxonomy WHERE term_taxonomy_id = $term->term_id LIMIT 1");
+
+		if ($category[0]->status) {
+			$array[$category[0]->taxonomy][] = $term;
+		}
+	}
+
+	wp_send_json_success($array);
+
 }
 
 add_action('wp_ajax_qsm_save_category', 'qsm_ajax_save_category');
