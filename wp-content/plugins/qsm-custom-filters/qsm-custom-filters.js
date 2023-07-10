@@ -170,7 +170,7 @@ jQuery(document).ready(function ($) {
       success: function (response) {
         $(".qsm-page").empty();
         console.log(response);
-        var questionBlock = buildQuestionBlock(response.data[0]);
+        var questionBlock = buildQuestionBlock(response.data);
         $(".qsm-page").append(questionBlock);
       },
       error: function (error) {
@@ -234,153 +234,156 @@ jQuery(document).ready(function ($) {
     return question;
   }
 
-  function buildQuestionBlock(questionData) {
-    // Analisar os dados da pergunta
-    var question = parseQuestionData(questionData);
-
-    // Criar o bloco HTML da pergunta
-    var $questionBlock = $(
-      '<div class="quiz_section qsm-question-wrapper" data-qid="' +
-        questionData.question_id +
-        '">'
-    );
-
-    // Adicionar o título da pergunta
-    var $questionTitle = $(
-      '<div class="mlw_qmn_new_question">' +
-        question.settings.question_title +
-        "</div>"
-    );
-    $questionBlock.append($questionTitle);
-
-    // Adicionar a div da pergunta
-    var $questionDiv = $('<div class="mlw_qmn_question qsm_remove_bold">');
-    $questionBlock.append($questionDiv);
-
-    // Adicionar o parágrafo da pergunta (se houver)
-    if (questionData.question_name) {
-      var $questionParagraph = $("<p>" + questionData.question_name + "</p>");
-      $questionDiv.append($questionParagraph);
-    }
-
-    // Adicionar as respostas
-    var $answersDiv = $('<div class="qmn_radio_answers">');
-    $.each(question.answers, function (index, answer) {
-      var $answerWrap = $(
-        '<div class="qmn_mc_answer_wrap mrq_checkbox_class" id="question' +
+  function buildQuestionBlock(questionArray) {
+    questionArray.forEach(function (questionData) {
+      // Analisar os dados da pergunta
+      var question = parseQuestionData(questionData);
+  
+      // Criar o bloco HTML da pergunta
+      var $questionBlock = $(
+        '<div class="quiz_section qsm-question-wrapper" data-qid="' +
           questionData.question_id +
-          "_" +
-          index +
           '">'
       );
-      var $answerInput = $(
-        '<input type="radio" class="qmn_quiz_radio" name="question' +
-          questionData.question_id +
-          '" id="question' +
-          questionData.question_id +
-          "_" +
-          index +
-          '" value="' +
-          (answer[2] == 1 ? 0 : 1) +
-          '">'
-      );
-      var $answerLabel = $(
-        '<label class="qsm-input-label" for="question' +
-          questionData.question_id +
-          "_" +
-          index +
-          '">' +
-          answer[0] +
-          "</label>"
-      );
-
-      $answerWrap.append($answerInput);
-      $answerWrap.append($answerLabel);
-      $answersDiv.append($answerWrap);
-    });
-
-    $questionDiv.append($answersDiv);
-
-    var $question = $questionBlock;
-    var questionId = $question.data("qid");
-    var $commentIcon = $(
-      '<p class="qsm-comment-icon"><i class="fas fa-comment-dots"></i> Comentarios</p>'
-    );
-
-    $commentIcon.on("click", function () {
-      $question.find(".qsm-comment-section").toggle();
-
-      $.ajax({
-        url: ajax_object.ajaxurl,
-        method: "POST",
-        data: {
-          action: "qsm_get_comments",
-          question_id: questionId,
-        },
-        beforeSend: function () {
-          $(".loading-indicator-" + questionId).show();
-        },
-
-        success: function (response) {
-          var comments = response.data.comments;
-          var $commentList = $(".qsm-comment-list" + questionId);
-          $commentList.empty();
-          comments.forEach(function (comment) {
-            var $commentItem = $(
-              '<div class="qsm-comment-item">' +
-                "<p> Re: " +
-                comment.comment_text +
-                ' <span class="comment-date">' +
-                comment.created_at +
-                "</span></p>" +
-                "</div>"
-            );
-
-            $commentList.append($commentItem);
-          });
-
-          $(".loading-indicator-" + questionId).hide();
-        },
-        error: function (error) {
-          console.error("Erro ao cadastrar o comentário:", error);
-        },
-      });
-    });
-    $question.append($commentIcon);
-
-    $questionBlock.each(function () {
-      var $question = $(this);
-      var questionId = $question.data("qid");
-      var $commentSection = $(
-        '<div class="qsm-comment-section">' +
-          '<div class="custom-comment-list">' +
-          '<div class="loading-indicator-' +
-          questionId +
-          '">' +
-          "<p>Carregando...</p>" +
-          "</div>" +
-          '<div class="qsm-comment-list' +
-          questionId +
-          '">' +
-          "<!-- Aqui serão exibidos os comentários -->" +
-          "</div>" +
-          "</div>" +
-          '<form class="qsm-comment-form">' +
-          '<input type="hidden" name="qsm-question-id" value="' +
-          questionId +
-          '">' +
-          '<textarea name="qsm-comment-input" rows="3" placeholder="Digite seu comentário"></textarea>' +
-          '<button type="submit" class="qsm-comment-submit">Enviar</button>' +
-          "</form>" +
+  
+      // Adicionar o título da pergunta
+      var $questionTitle = $(
+        '<div class="mlw_qmn_new_question">' +
+          question.settings.question_title +
           "</div>"
       );
-
-      $question.append($commentSection);
+      $questionBlock.append($questionTitle);
+  
+      // Adicionar a div da pergunta
+      var $questionDiv = $('<div class="mlw_qmn_question qsm_remove_bold">');
+      $questionBlock.append($questionDiv);
+  
+      // Adicionar o parágrafo da pergunta (se houver)
+      if (questionData.question_name) {
+        var $questionParagraph = $("<p>" + questionData.question_name + "</p>");
+        $questionDiv.append($questionParagraph);
+      }
+  
+      // Adicionar as respostas
+      var $answersDiv = $('<div class="qmn_radio_answers">');
+      question.answers.forEach(function (answer, index) {
+        var $answerWrap = $(
+          '<div class="qmn_mc_answer_wrap mrq_checkbox_class" id="question' +
+            questionData.question_id +
+            "_" +
+            index +
+            '">'
+        );
+        var $answerInput = $(
+          '<input type="radio" class="qmn_quiz_radio" name="question' +
+            questionData.question_id +
+            '" id="question' +
+            questionData.question_id +
+            "_" +
+            index +
+            '" value="' +
+            (answer[2] ? "0" : "1") +
+            '">'
+        );
+        var $answerLabel = $(
+          '<label class="qsm-input-label" for="question' +
+            questionData.question_id +
+            "_" +
+            index +
+            '">' +
+            answer[0] +
+            "</label>"
+        );
+  
+        $answerWrap.append($answerInput);
+        $answerWrap.append($answerLabel);
+        $answersDiv.append($answerWrap);
+      });
+  
+      $questionDiv.append($answersDiv);
+  
+      var $question = $questionBlock;
+      var questionId = $question.data("qid");
+      var $commentIcon = $(
+        '<p class="qsm-comment-icon"><i class="fas fa-comment-dots"></i> Comentarios</p>'
+      );
+  
+      $commentIcon.on("click", function () {
+        $question.find(".qsm-comment-section").toggle();
+  
+        $.ajax({
+          url: ajax_object.ajaxurl,
+          method: "POST",
+          data: {
+            action: "qsm_get_comments",
+            question_id: questionId,
+          },
+          beforeSend: function () {
+            $(".loading-indicator-" + questionId).show();
+          },
+  
+          success: function (response) {
+            var comments = response.data.comments;
+            var $commentList = $(".qsm-comment-list" + questionId);
+            $commentList.empty();
+            comments.forEach(function (comment) {
+              var $commentItem = $(
+                '<div class="qsm-comment-item">' +
+                  "<p> Re: " +
+                  comment.comment_text +
+                  ' <span class="comment-date">' +
+                  comment.created_at +
+                  "</span></p>" +
+                  "</div>"
+              );
+  
+              $commentList.append($commentItem);
+            });
+  
+            $(".loading-indicator-" + questionId).hide();
+          },
+          error: function (error) {
+            console.error("Erro ao cadastrar o comentário:", error);
+          },
+        });
+      });
+      $question.append($commentIcon);
+  
+      $questionBlock.each(function () {
+        var $question = $(this);
+        var questionId = $question.data("qid");
+        var $commentSection = $(
+          '<div class="qsm-comment-section">' +
+            '<div class="custom-comment-list">' +
+            '<div class="loading-indicator-' +
+            questionId +
+            '">' +
+            "<p>Carregando...</p>" +
+            "</div>" +
+            '<div class="qsm-comment-list' +
+            questionId +
+            '">' +
+            "<!-- Aqui serão exibidos os comentários -->" +
+            "</div>" +
+            "</div>" +
+            '<form class="qsm-comment-form">' +
+            '<input type="hidden" name="qsm-question-id" value="' +
+            questionId +
+            '">' +
+            '<textarea name="qsm-comment-input" rows="3" placeholder="Digite seu comentário"></textarea>' +
+            '<button type="submit" class="qsm-comment-submit">Enviar</button>' +
+            "</form>" +
+            "</div>"
+        );
+  
+        $question.append($commentSection);
+      });
+  
+      // Adicionar o bloco da pergunta à div pai (qsm-page)
+      $(".qsm-page").append($questionBlock);
     });
-
-    // Adicionar o bloco da pergunta à div pai (qsm-page)
-    $(".qsm-page").append($questionBlock);
   }
+  
 });
 
 function updateItemCount(category) {
